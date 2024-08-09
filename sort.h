@@ -24,5 +24,8 @@ void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
+void _swap(int *value1, int *value2);
+int lomuto_partition(int *array, int low, int high, size_t size);
+void _quick_sort(int *array, int low, int high, size_t size);
 
 #endif /* _BINARY_TREES_H_ */
