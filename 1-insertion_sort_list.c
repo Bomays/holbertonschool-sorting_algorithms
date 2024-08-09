@@ -9,38 +9,43 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-    if (!list || !*list || !(*list)->next)
-        return;
+	listint_t *next, *prev, *current;
 
-    listint_t *current = (*list)->next;
+	if (!list || !*list || !(*list)->next)
+	{
+		return;
+	}
+	current = (*list)->next;
 
-    while (current)
-    {
-        listint_t *next = current->next;
-        listint_t *prev = current->prev;
+	while (current)
+	{
+		next = current->next;
+		prev = current->prev;
 
-        while (prev && prev->n > current->n)
-        {
-            // Swap nodes
-            prev->next = current->next;
-            if (current->next)
-                current->next->prev = prev;
+		while (prev && prev->n > current->n)
+		{
+			prev->next = current->next;
 
-            current->next = prev;
-            current->prev = prev->prev;
-            prev->prev = current;
+			if (current->next)
+			{
+				current->next->prev = prev;
+			}
+			current->next = prev;
+			current->prev = prev->prev;
 
-            if (current->prev)
-                current->prev->next = current;
-            else
-                *list = current;
-
-            prev = current->prev;
-
-            print_list(*list);
-        }
-
-        current = next;
-    }
+			if (prev->prev)
+			{
+				prev->prev->next = current;
+			}
+			else
+			{
+				*list = current;
+			}
+			prev->prev = current;
+			prev = current->prev;
+			print_list(*list);
+		}
+		current = next;
+	}
 }
 
