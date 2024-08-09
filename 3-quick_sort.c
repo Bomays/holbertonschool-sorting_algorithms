@@ -7,11 +7,11 @@
  */
 void _swap(int *value1, int *value2)
 {
-    int temp;
+	int temp;
 
-    temp = *value1;
-    *value1 = *value2;
-    *value2 = temp;
+	temp = *value1;
+	*value1 = *value2;
+	*value2 = temp;
 }
 
 /**
@@ -24,30 +24,30 @@ void _swap(int *value1, int *value2)
  */
 int lomuto_partition(int *array, int low, int high, size_t size)
 {
-    int pivot = array[high];
-    int i = low - 1;
-    int j;
+	int pivot = array[high];
+	int i = low - 1;
+	int j;
 
-    for (j = low; j <= high - 1; j++)
-    {
-        if (array[j] < pivot)
-        {
-            i++;
-            if (i != j)
-            {
-                _swap(&array[i], &array[j]);
-                print_array(array, size);
-            }
-        }
-    }
+	for (j = low; j <= high - 1; j++)
+	{
+		if (array[j] < pivot)
+		{
+			i++;
+			if (i != j)
+			{
+				_swap(&array[i], &array[j]);
+				print_array(array, size);
+			}
+		}
+	}
 
-    if (array[i + 1] != array[high])
-    {
-        _swap(&array[i + 1], &array[high]);
-        print_array(array, size);
-    }
+	if (array[i + 1] != array[high])
+	{
+		_swap(&array[i + 1], &array[high]);
+		print_array(array, size);
+	}
 
-    return (i + 1);
+	return (i + 1);
 }
 
 /**
@@ -59,14 +59,14 @@ int lomuto_partition(int *array, int low, int high, size_t size)
  */
 void _quick_sort(int *array, int low, int high, size_t size)
 {
-    int pivot_index;
+	int pivot_index;
 
-    if (low < high)
-    {
-        pivot_index = lomuto_partition(array, low, high, size);
-        _quick_sort(array, low, pivot_index - 1, size);
-        _quick_sort(array, pivot_index + 1, high, size);
-    }
+	if (low < high)
+	{
+		pivot_index = lomuto_partition(array, low, high, size);
+		_quick_sort(array, low, pivot_index - 1, size);
+		_quick_sort(array, pivot_index + 1, high, size);
+	}
 }
 
 /**
@@ -77,11 +77,11 @@ void _quick_sort(int *array, int low, int high, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-    if (array == NULL || size < 2)
-    {
-        return;
-    }
+	if (array == NULL || size < 2)
+	{
+		return;
+	}
 
-    _quick_sort(array, 0, size - 1, size);
+	_quick_sort(array, 0, size - 1, size);
 }
 
